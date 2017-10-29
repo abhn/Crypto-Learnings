@@ -2,6 +2,18 @@
 Personal notes created while reading about crypto
 
 ## Contents
+- Goals of cryptosystems
+    - Authentication
+    - Confidentiality
+    - Integrity
+    - Non-repudiation
+    - Plausible denaibility
+
+- Attacks on cryptosystems
+    - Ciphertext only
+    - Known plaintext
+    - Choosen plaintext
+    - Choosen ciphertext
 
 - Block Cipher Modes
     - Confidentiality only
@@ -24,6 +36,47 @@ Personal notes created while reading about crypto
     - Encrypt-then-MAC (EtM)
     - Encrypt-and-MAC (E&M)
     - MAC-then-Encrypt (MtE)
+
+## Goals of cryptosystems
+Suppose Alice and Bob are best of friends and some random day, Alice wishes to send a message to Bob. 
+
+#### Authentication
+- Problem it solves: How does bob know for sure it came from Alice.
+
+#### Confidentiality
+- Problem it solves: How do Alice and Bob ensure that no one else can read the sent message.
+
+### Integrity
+- Problem it solves: How does Bob ensure that the message wasn't tampered with in the way from Alice to him.
+
+### Non-repudiation
+- Problem it solves: Bob has a friend Dave who doesn't believe Bob. How can Bob prove to Dave that it was Alice who sent him that particular message.
+
+### Plausible Denialibility
+- Problem it solves: Alice wishes to send a message to Bob. Alice wants Bob to be able to verify that the message did in fact came from Alice. However, knowing the kind of people Bob hangs out with, Alice doesn't want Bob to be able to prove to anyone else that the message was sent by Alice.
+
+
+## Attacks on cryptosystems
+Keep in mind that the end goal for an attacker here is to not be able to read or modify data, but to get the pre-shared secret between the communicating parties
+
+#### Ciphertext only attack
+- The attacker has access to only the ciphertext data
+- The is the most conservative attack model and in reality most attackers have access to much more than just ciphertext
+- Even in this attack type, __traffic analysis__ can be done. For example, _when_ is the communication happening, _who_ is talking to _whom_, for _how long_ the communication is happening, _how much_ communication is happening etc.
+- Example, Eve just has `G SLARTEDS AE` and nothing else
+
+#### Known plaintext attack
+- The attacker has access to some plaintext - ciphertext pairs
+- This attack is also very realistic as real world communications are highly non-random
+- Example, Eve has `G SLARTEDS AE` and knows it stands for `I JUST LANDED`
+
+#### Choosen plaintext attack
+- The attacker can choose the plaintext that has to be encrypted to ciphertext
+- Example, Eve can choose a plaintext `ENCRYPT THIS` and get it encrypted by the communication channel `LAFJEJS STEAS`
+
+#### Choosen ciphertext attack
+- The attacker can select a ciphertext block and have it decrypted by the communication channel
+- Example, Eve can instruct to have `LARAR ADE` decrypted and get the plain text value `EVIL ME`
 
 ## Block Cipher Modes
 - A block cipher mode is an encrypting function used when more than just one block of data is to be processed.

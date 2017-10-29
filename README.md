@@ -2,6 +2,7 @@
 Personal notes created while reading about crypto
 
 ## Contents
+
 - Block Cipher Modes
     - Confidentiality only
         - ECB (Electronic Codebook)

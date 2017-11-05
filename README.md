@@ -47,6 +47,7 @@ Personal notes created while reading about crypto
 
 - Kerchoff's Principle
 - Zero Knowledge Proofs
+- One way functions
 
 ## Goals of cryptosystems
 Suppose Alice and Bob are best of friends and some random day, Alice wishes to send a message to Bob. 
@@ -97,8 +98,8 @@ Keep in mind that the end goal for an attacker here is to not be able to read or
 - A key is of a constant length, say 128/192/256 bits for AES.
 
 #### Key derivation function (KDF)
-- Encryption functions require fixed length keys, but passphrases supplied by people are of arbitary lengths, which is a problem.
-- A key derivation function takes an arbitary length passphrase and converts it into a constant length key that is then supplied to the encryption function
+- Encryption functions require fixed length keys, but passphrases supplied by people are of arbitrary lengths, which is a problem.
+- A key derivation function takes an arbitrary length passphrase and converts it into a constant length key that is then supplied to the encryption function
 
 #### Symmetric Key
 - Same key is used for encryption as well as decryption
@@ -215,3 +216,13 @@ The security of a cryptosystem should depend only on the key and not on anything
 ## Zero Knowledge Proofs
 - A method to prove the possession of some information without giving away the information.
 - Should satisfy completeness, soundness and zero-knowledge properties
+
+## One Way Functions (Hash functions)
+- Take an arbitrary sized input and map it to an output of fixed size. 
+- Since the input is arbitrary sized, an infinite number of collision are theoretically possible. Security is in an attacker not being able to find two messages m and m' such that H(m) == H(m') in reasonable time.
+- Most hash function output a 128-1024 bit sized hash.
+- Most hash functions are iterative in their implementation.
+- Used for integrity check; in HMAC for authentication of message;
+- SHA1 is broken.
+- SHA2 with 256 and 512 bits is vulnerable to length extension attacks, and SHA2 224 and 384 are therefore more secure.
+- SHA3, the newest in the SHA family, is the recommended by experts.

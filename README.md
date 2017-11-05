@@ -21,6 +21,7 @@ Personal notes created while reading about crypto
     - Asymmetric key
 
 - Block Cipher
+- Stream Cipher
 
 - Block Cipher Modes
     - Confidentiality only
@@ -62,7 +63,7 @@ Suppose Alice and Bob are best of friends and some random day, Alice wishes to s
 #### Non-repudiation
 - Problem it solves: Bob has a friend Dave who doesn't believe Bob. How can Bob prove to Dave that it was Alice who sent him that particular message.
 
-#### Plausible Denialibility
+#### Plausible Deniability
 - Problem it solves: Alice wishes to send a message to Bob. Alice wants Bob to be able to verify that the message did in fact came from Alice. However, knowing the kind of people Bob hangs out with, Alice doesn't want Bob to be able to prove to anyone else that the message was sent by Alice.
 
 
@@ -120,6 +121,11 @@ Keep in mind that the end goal for an attacker here is to not be able to read or
 - Collision is two distinct plaintext blocks (m and m') that compute to the same ciphertext block
 - In general, an attacker can expect a collision after seeing 2^n/2 blocks of data, where n is the block size (for AES, this is 2^128/2 = 2^64 bits). This is a general problem called birthday paradox or birthday attack
 - This is the reason Bruce Schneier recommends AES with 256 bit key rather than 128. 
+
+## Stream Cipher
+- Stream ciphers usually encrypt smaller quantities of data at a time, but still need to have a little block which can be from a bit to a couple of bytes.
+- Essentially, the key is used to generate a key stream which is then xor'd with the plaintext to get a ciphertext stream.
+- Some block cipher modes like OFB and CTR function like a stream cipher if the above definition is to be followed
 
 ## Block Cipher Modes
 - A block cipher mode is an encrypting function used when more than just one block of data is to be processed.

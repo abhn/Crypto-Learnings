@@ -49,6 +49,8 @@ Personal notes created while reading about crypto
 - Zero Knowledge Proofs
 - One way functions
 - Trust
+- Error handling
+- Replays and retries
 
 ## Goals of cryptosystems
 Suppose Alice and Bob are best of friends and some random day, Alice wishes to send a message to Bob. 
@@ -248,7 +250,23 @@ The security of a cryptosystem should depend only on the key and not on anything
     - No clear specification
         - S/W must have requirements, functional specification and implementation design
     - Test and fix approach does not produce a correct program. It produces a program that works fine in most common situations.
-        - Testing can only show the presence of bugs, not absense.
+        - Testing can only show the presence of bugs, not absence.
         - If you find a bug, first implement a test that will detect the bug. 
         - When a bug is found, think about what caused it
     - Lax attitude towards software bugs
+
+## Error Handling
+- Errors can give away lot of useful information to an attacker
+- Whenever possible, don't send an error response
+- Watch out for interaction between errors and timing attacks
+- If an error has to be returned, make it as generic as possible. 'An error occurred' will do.
+
+## Replays and Retries
+- Replay occurs when Eve sends an earlier message of Alice to Bob, she 'replays' a message.
+- Retry occurs when Alice doesn't receive an acknowledgement for an earlier message she send, and she sends it again, and Bob receives two similar messages.
+- Guidelines to deal with replays and retries
+    - If the message is future dated, ignore it
+    - If the message is from past, check if the message is same. If it is same, respond in the exact similar way
+    - If the message is different, then either the previous message was bogus, or the current one is bogus. This is an indication of an attack and should be treated as protocol error.
+    - If the current message is older than the message you've already received, check if it is identical. If yes, ignore. If no, this can be an attack and should be treated as protocol error.
+- It is impossible to know whether the last message in the protocol arrived. 

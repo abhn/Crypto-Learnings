@@ -48,6 +48,7 @@ Personal notes created while reading about crypto
 - Kerchoff's Principle
 - Zero Knowledge Proofs
 - One way functions
+- Trust
 
 ## Goals of cryptosystems
 Suppose Alice and Bob are best of friends and some random day, Alice wishes to send a message to Bob. 
@@ -226,3 +227,28 @@ The security of a cryptosystem should depend only on the key and not on anything
 - SHA1 is broken.
 - SHA2 with 256 and 512 bits is vulnerable to length extension attacks, and SHA2 224 and 384 are therefore more secure.
 - SHA3, the newest in the SHA family, is the recommended by experts.
+
+## Trust
+- Ultimate basis for all human interaction
+- There are several sources of trust
+    - Ethics
+    - Reputation
+    - Physical threat
+    - Mutually assured destruction
+- Trust happens when one party knows the incentives of the other party to behave properly
+- Incentives fail when dealing with irrational people as they cannot be trusted to act in their best interests
+- "Do you trust him?" is an incomplete question. "Do you trust him with X?" is the right question as trust isn't white or black but grey. <- degrees of trust
+- Risk, which is the converse of trust, is usually measured in business.
+- Understand what incentives drive people and then create your protocols accordingly
+- The function of cryptographic protocols is to minimize the number of people who need to trust each other and the amount of trust they need to have
+
+## Secure Software Implementation
+- Problem: No one knows how to write correct software
+- Reason: 
+    - No clear specification
+        - S/W must have requirements, functional specification and implementation design
+    - Test and fix approach does not produce a correct program. It produces a program that works fine in most common situations.
+        - Testing can only show the presence of bugs, not absense.
+        - If you find a bug, first implement a test that will detect the bug. 
+        - When a bug is found, think about what caused it
+    - Lax attitude towards software bugs

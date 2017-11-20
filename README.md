@@ -12,8 +12,8 @@ Personal notes created while reading about crypto
 - Attacks on cryptosystems
     - Ciphertext only
     - Known plaintext
-    - Choosen plaintext
-    - Choosen ciphertext
+    - Chosen plaintext
+    - Chosen ciphertext
 
 - Encryption
     - Key
@@ -67,7 +67,7 @@ Suppose Alice and Bob are best of friends and some random day, Alice wishes to s
 #### Non-repudiation
 - Problem it solves: Bob has a friend Dave who doesn't believe Bob. How can Bob prove to Dave that it was Alice who sent him that particular message.
 
-#### Plausible Deniability
+#### Plausible Denaibility
 - Problem it solves: Alice wishes to send a message to Bob. Alice wants Bob to be able to verify that the message did in fact came from Alice. However, knowing the kind of people Bob hangs out with, Alice doesn't want Bob to be able to prove to anyone else that the message was sent by Alice.
 
 
@@ -85,18 +85,18 @@ Keep in mind that the end goal for an attacker here is to not be able to read or
 - This attack is also very realistic as real world communications are highly non-random
 - Example, Eve has `G SLARTEDS AE` and knows it stands for `I JUST LANDED`
 
-#### Choosen plaintext attack
+#### Chosen plaintext attack
 - The attacker can choose the plaintext that has to be encrypted to ciphertext
 - Example, Eve can choose a plaintext `ENCRYPT THIS` and get it encrypted by the communication channel `LAFJEJS STEAS`
 
-#### Choosen ciphertext attack
+#### Chosen ciphertext attack
 - The attacker can select a ciphertext block and have it decrypted by the communication channel
 - Example, Eve can instruct to have `LARAR ADE` decrypted and get the plain text value `EVIL ME`
 
 ## Encryption
 
 #### Key
-- Encryption works by transfering the responsibility of securing a large quantity of data to a small quantity of data.
+- Encryption works by transferring the responsibility of securing a large quantity of data to a small quantity of data.
 - This small data is derived from the password/passphrase that we humans can remember.
 - A key is of a constant length, say 128/192/256 bits for AES.
 
@@ -133,9 +133,9 @@ Keep in mind that the end goal for an attacker here is to not be able to read or
 
 ## Block Cipher Modes
 - A block cipher mode is an encrypting function used when more than just one block of data is to be processed.
-- Think of it as a wrapper around the actual block cipher alogrithm.
+- Think of it as a wrapper around the actual block cipher algorithm.
 - Why is it required? Because if no cipher mode is used, a plaintext ABC will encrypt to the same ciphertext XYZ for a single key.
-- How is that a problem? Given our everyday communications are not truely random (for example, packet headers, misc data that repeats in a typical internet exchange (say the sender's ID in a whatsapp group chat)), we do not want to leak the information that some particular data is being repeated.
+- How is that a problem? Given our everyday communications are not truly random (for example, packet headers, misc data that repeats in a typical internet exchange (say the sender's ID in a whatsapp group chat)), we do not want to leak the information that some particular data is being repeated.
 - Block cipher modes are divided into the ones providing confidentiality only and the ones providing confidentiality and authentication
 
 ### Block Ciphers providing confidentiality only
@@ -150,7 +150,7 @@ Keep in mind that the end goal for an attacker here is to not be able to read or
 -  Previous block's ciphertext is xor'd with the current plaintext block before encryption.
 - `C[i] = E(K, C[i-1] ⊕ P[i])` where ⊕ represents the xor or exclusive-or operation.
 - The issue here is getting the first ciphertext block. Generally, an Initialization Vector. 
-- Initialization Vectors may be static (Same IV used everytime), counter (Incremented upon every use) or random (randomly generated upon every use). Details in initialization vector section.
+- Initialization Vectors may be static (Same IV used every time), counter (Incremented upon every use) or random (randomly generated upon every use). Details in initialization vector section.
 
 #### OFB (Output Feedback)
 - _Output Feedback_ mode uses the block cipher to generate a key stream and ⊕s the key stream with the message
@@ -185,7 +185,7 @@ Keep in mind that the end goal for an attacker here is to not be able to read or
 - MAC is that of plaintext, hence any weakness in MAC algorithm can leak information about the plaintext itself.
 
 #### MAC then Encrypt (MtE)
-- MAC the plaintext and appeand it to the plaintext
+- MAC the plaintext and append it to the plaintext
 - Encrypt the plaintext and MAC
 - Does not expose the MAC value to Eve as both the plaintext and the MAC are encrypted
 - Protects authentication above encryption

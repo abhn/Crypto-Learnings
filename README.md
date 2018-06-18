@@ -52,6 +52,7 @@ Personal notes created while reading about crypto
 - Error handling
 - Replays and retries
 
+
 ## Goals of cryptosystems
 Suppose Alice and Bob are best of friends and some random day, Alice wishes to send a message to Bob. 
 
